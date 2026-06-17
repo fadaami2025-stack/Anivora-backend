@@ -1,0 +1,19 @@
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.post("/generate", (req, res) => {
+  let input = req.body.prompt;
+
+  let result = `
+    <h1>${input}</h1>
+    <p>This is your AI website</p>
+  `;
+
+  res.json({ result });
+});
+
+app.listen(3000, () => console.log("Running"));
